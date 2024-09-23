@@ -15,7 +15,7 @@ const visionClient = new ImageAnnotatorClient();
 const ttsClient = new textToSpeech.TextToSpeechClient();
 
 // Multer setup for file uploads
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: '/tmp/' }); // Use /tmp instead of /workspace/uploads
 
 // Middleware to parse JSON requests
 app.use(express.json());
