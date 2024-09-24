@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 3000;
 
 // Set up Google Vision client for OCR
 const visionClient = new ImageAnnotatorClient();
@@ -19,6 +19,10 @@ const upload = multer({ dest: '/tmp/' }); // Use /tmp instead of /workspace/uplo
 
 // Middleware to parse JSON requests
 app.use(express.json());
+
+app.get('/ping', (req, res) => {
+  res.send('Server is running!');
+});
 
 // POST route to scan product label
 app.post('/api/scan-label', upload.single('labelImage'), async (req, res) => {
